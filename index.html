@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dev Shah - Finance and Math student at Rutgers University">
+  <title>Dev Shah | Portfolio</title>
+  <style>
+    :root {
+      --navy: #0f1f3d;
+      --accent: #c8102e;
+      --gold: #b8923b;
+      --bg: #f6f7fa;
+      --card: #ffffff;
+      --text: #1d2433;
+      --muted: #5b6577;
+      --border: #e3e6ee;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--navy);
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    }
+    .nav-inner {
+      max-width: 1000px; margin: 0 auto; padding: 14px 24px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+    }
+    .brand { color: #fff; font-weight: 700; letter-spacing: .5px; text-decoration: none; }
+    .nav-links { display: flex; gap: 22px; list-style: none; flex-wrap: wrap; }
+    .nav-links a {
+      color: #cfd6e6; text-decoration: none; font-size: .95rem;
+      padding-bottom: 2px; border-bottom: 2px solid transparent; transition: .2s;
+    }
+    .nav-links a:hover { color: #fff; border-color: var(--gold); }
+
+    /* Hero */
+    header.hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1c3566 100%);
+      color: #fff; text-align: center;
+      padding: 90px 24px 80px;
+    }
+    .hero h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); margin-bottom: 10px; }
+    .hero .tag {
+      color: var(--gold); text-transform: uppercase; letter-spacing: 3px;
+      font-size: .85rem; margin-bottom: 18px; display: block;
+    }
+    .hero .statement {
+      max-width: 700px; margin: 0 auto 28px;
+      font-size: 1.2rem; color: #e3e8f4;
+    }
+    .btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 11px 26px; border-radius: 6px;
+      text-decoration: none; font-weight: 600; font-size: .95rem; transition: .2s;
+    }
+    .btn.primary { background: var(--accent); color: #fff; }
+    .btn.primary:hover { background: #a60d25; }
+    .btn.ghost { border: 2px solid #fff; color: #fff; }
+    .btn.ghost:hover { background: #fff; color: var(--navy); }
+
+    /* Sections */
+    main { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 64px 0 8px; }
+    section h2 {
+      font-size: 1.8rem; color: var(--navy); margin-bottom: 26px;
+      position: relative; padding-bottom: 10px;
+    }
+    section h2::after {
+      content: ""; position: absolute; left: 0; bottom: 0;
+      width: 56px; height: 3px; background: var(--accent); border-radius: 2px;
+    }
+
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 24px;
+      box-shadow: 0 2px 6px rgba(15,31,61,.05);
+    }
+
+    /* About */
+    .about p { color: var(--muted); margin-bottom: 10px; }
+    .about strong { color: var(--text); }
+
+    /* Skills */
+    .skills-grid {
+      display: grid; gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .skills-grid h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 12px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      background: #eef1f8; color: var(--navy);
+      padding: 5px 13px; border-radius: 999px; font-size: .88rem; font-weight: 500;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid; gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    }
+    .project { display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s; }
+    .project:hover { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(15,31,61,.12); }
+    .project .meta { color: var(--gold); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .project h3 { margin: 6px 0 4px; color: var(--navy); font-size: 1.2rem; }
+    .project .org { color: var(--muted); font-size: .9rem; margin-bottom: 12px; }
+    .project ul { padding-left: 18px; color: var(--text); font-size: .94rem; flex: 1; }
+    .project li { margin-bottom: 6px; }
+    .project .link {
+      margin-top: 16px; font-weight: 600; font-size: .9rem;
+      color: var(--accent); text-decoration: none;
+    }
+    .project .link:hover { text-decoration: underline; }
+
+    /* Leadership */
+    .lead-list { display: grid; gap: 16px; }
+    .lead-item h3 { color: var(--navy); font-size: 1.05rem; }
+    .lead-item .role { color: var(--muted); font-size: .9rem; margin-bottom: 6px; }
+    .lead-item p { font-size: .94rem; }
+
+    /* Contact */
+    .contact { text-align: center; }
+    .contact p { color: var(--muted); margin-bottom: 20px; }
+
+    footer {
+      margin-top: 64px; background: var(--navy); color: #aab4cb;
+      text-align: center; padding: 22px; font-size: .88rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 64px 20px 56px; }
+      .nav-links { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="#top">DEV SHAH</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <span class="tag">Finance &amp; Mathematics &middot; Rutgers University</span>
+    <h1>Dev Shah</h1>
+    <p class="statement">
+      I am a finance and math student at Rutgers University expected to graduate in 2029 aiming for a career in investment banking.
+    </p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">View My Work</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/Dev-Shah200" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="card about">
+        <p><strong>Education:</strong> B.S. in Finance and Math, Rutgers University &ndash; New Brunswick (Expected May 2029)</p>
+        <p><strong>GPA:</strong> 4.00 / 4.00 &middot; Dean's List</p>
+        <p><strong>Relevant Coursework:</strong> Finance for Wall Street, Multivariable Calculus, Intro to Financial Accounting</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="card">
+          <h3>Finance &amp; Analysis</h3>
+          <div class="chips">
+            <span class="chip">Financial Modeling</span>
+            <span class="chip">Valuation</span>
+            <span class="chip">Financial Statement Analysis</span>
+            <span class="chip">Market Research</span>
+            <span class="chip">CIM Development</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Technical</h3>
+          <div class="chips">
+            <span class="chip">Excel</span>
+            <span class="chip">Word</span>
+            <span class="chip">PowerPoint</span>
+            <span class="chip">Python (Basic)</span>
+            <span class="chip">Java (Basic)</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Certifications</h3>
+          <div class="chips">
+            <span class="chip">Analyzing Financial Reports (Wall Street Prep)</span>
+            <span class="chip">Microsoft Excel (Wall Street Prep)</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Languages</h3>
+          <div class="chips">
+            <span class="chip">English (Fluent)</span>
+            <span class="chip">Gujarati (Fluent)</span>
+            <span class="chip">Hindi (Conversational)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Experience &amp; Projects</h2>
+      <div class="projects-grid">
+
+        <article class="card project">
+          <span class="meta">Jun 2026 &ndash; Aug 2026</span>
+          <h3>Junior M&amp;A Analyst</h3>
+          <div class="org">Sellside Group LLC &middot; Dallas, TX</div>
+          <ul>
+            <li>Researched markets to identify acquisition targets matching client criteria and built prospect lists in a CRM.</li>
+            <li>Sourced 1,000+ companies and qualified 200+ targets through outreach.</li>
+            <li>Developed the financial analysis section of a sell-side Confidential Information Memorandum (CIM).</li>
+          </ul>
+        </article>
+
+        <article class="card project">
+          <span class="meta">Sep 2025 &ndash; Dec 2025</span>
+          <h3>Bender Trust Research Project</h3>
+          <div class="org">Little Investment Bankers of Rutgers</div>
+          <ul>
+            <li>Researched Uranium Energy Corporation (NYSE: UEC), analyzing industry trends and market position.</li>
+            <li>Analyzed financial statements to evaluate revenue trends and long-term profitability.</li>
+            <li>Built forecasts and valuation analyses supporting a BUY investment thesis.</li>
+          </ul>
+          <a class="link" href="https://drive.google.com/file/d/1fpiGrnfkcF-1hmDNL2CDqf7fPt64FGiw/view?usp=drive_link" target="_blank" rel="noopener">View Research Report &rarr;</a>
+        </article>
+
+        <article class="card project">
+          <span class="meta">Mar 2026 &ndash; Jun 2026</span>
+          <h3>HydroSync Marketing Plan</h3>
+          <div class="org">Group Marketing Project</div>
+          <ul>
+            <li>Developed a full launch marketing plan for HydroSync, a $69 Bluetooth smart water bottle with AI-adaptive hydration goals.</li>
+            <li>Completed market research, a SWOT analysis, and segmentation across students, athletes, and office workers.</li>
+            <li>Built the 4Ps mix, digital strategy, 12-month timeline, and $100K budget, targeting 5,000 units and $345K revenue in Year 1.</li>
+          </ul>
+          <a class="link" href="https://drive.google.com/file/d/1SsG8SaGcep--XQC3GPQBQuAPGodSIn6c/view?usp=drive_link" target="_blank" rel="noopener">View Presentation &rarr;</a>
+        </article>
+
+        <article class="card project">
+          <span class="meta">Sep 2025 &ndash; Present</span>
+          <h3>Allocations Committee</h3>
+          <div class="org">Rutgers Business Governing Association</div>
+          <ul>
+            <li>Allocate $50,000+ across 30+ Rutgers Business School student organizations.</li>
+            <li>Collaborate on a fundraising gala supporting a Make-A-Wish child.</li>
+            <li>Help revise funding guidelines to improve fairness across organizations.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="leadership">
+      <h2>Leadership</h2>
+      <div class="lead-list">
+        <div class="card lead-item">
+          <h3>Rutgers Road to Wall Street (RTWS) &ndash; Cohort 16 Member</h3>
+          <div class="role">Sep 2026 &ndash; Present</div>
+          <p>Selected as 1 of 60 members from a pool of 300+ applicants after two interview rounds. Learning valuation methods, Excel, and technical finance skills from a former Wall Street banker.</p>
+        </div>
+        <div class="card lead-item">
+          <h3>Alpha Kappa Psi &ndash; Recruitment Manager</h3>
+          <div class="role">Apr 2026 &ndash; Present</div>
+          <p>Lead recruitment strategy, logistics, and social media outreach to attract 150+ prospective members for Fall rush.</p>
+        </div>
+        <div class="card lead-item">
+          <h3>Gujarati Student Association &ndash; Events Committee</h3>
+          <div class="role">Sep 2025 &ndash; Present</div>
+          <p>Plan and execute large-scale cultural events, including a sold-out Garba with 1,200+ students.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2 style="display:inline-block;">Get In Touch</h2>
+      <div class="card" style="margin-top:10px;">
+        <p>Feel free to connect with me.</p>
+        <div class="btns">
+          <a class="btn primary" href="mailto:shahdev0220@gmail.com">Email Me</a>
+          <a class="btn ghost" style="color:var(--navy);border-color:var(--navy);" href="https://www.linkedin.com/in/Dev-Shah200" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Dev Shah &middot; Rutgers University
+  </footer>
+
+</body>
+</html>
